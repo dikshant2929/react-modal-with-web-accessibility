@@ -34,7 +34,14 @@ const Modal = ({ children, onModalClose }) => {
             'a[href], button, textarea, input[type="text"], input[type="radio"], input[type="checkbox"], select'
         );
         
-        //console.log(document.activeElement);
+        if(document.activeElement){
+            const activeElement = document.activeElement;
+            for(let index = 0; index < focusableModalElements.length; index++){
+                if(focusableModalElements[index] === activeElement){
+                    count = index + 1;
+                }    
+            }
+        }
         if(!e.shiftKey){
             count !== focusableModalElements.length ? (count++) : (count = 1);
             const element = focusableModalElements[count - 1];
@@ -63,14 +70,15 @@ const Modal = ({ children, onModalClose }) => {
 }
 
 Modal.Header = function ModalHeader(props) {
+    const closeIcon = props.closeIcon ?? true;
     const { onModalClose } = useContext(modalContext);
 
     return (
         <div className="modal-header">
             {props.children}
-            <button className="cross-btn" title="close modal" onClick={onModalClose}>
+            { closeIcon && <span className="cross-btn" title="close modal" onClick={onModalClose}>
                 <Cross />
-            </button>
+            </span>}
         </div>
     );
 };
