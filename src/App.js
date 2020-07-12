@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Modal from './modal/Modal';
+import Modal from './modal';
 
 class App extends React.Component {
 
@@ -34,10 +34,25 @@ class App extends React.Component {
         <input type='text'></input>
         <input type='text'></input>
         
-        <Modal show={this.state.showModal} onClose={this.onClose}>
-          <input type='text'></input>
+        {this.state.showModal && (
+        <Modal onModalClose={this.onClose}>
+          <Modal.Header>Header</Modal.Header>
+          <Modal.Body>
+
+            <>
+              <input type='text'></input>
+              <input type='text'></input>
+              <input type='text'></input>
+              <input type='text'></input>
+            </>
+
+          </Modal.Body>
+          <Modal.Footer>
+            <Modal.Footer.CloseBtn>Close</Modal.Footer.CloseBtn>
+          </Modal.Footer>
         </Modal>
-        
+      )}
+
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <p>
