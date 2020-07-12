@@ -14,9 +14,13 @@
     color: #62626e;
 }
 
+.modal-content::-webkit-scrollbar { width: 0 !important }
 .modal-content {
-    width: 80%;
-    height: 90%;
+    width : auto;
+    height : auto;
+    
+    max-width: 80%;
+    max-height: 90%;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -46,6 +50,9 @@
 }
 
 .modal-body {
+    overflow: auto;
+    overflow-x: auto;
+    overflow-y: auto;
     flex-grow: 1;
     border-top: solid 1px #d8dce3;
     padding: 14px 29px 14px 19px;
@@ -63,6 +70,23 @@
     box-shadow: rgba(0, 0, 0, 0.35) 0px 2px 2px 0px;
     background-color: rgb(77, 144, 255);
     color: rgb(247, 248, 250);
+    height: 35px;
+    width: 117px;
+    font-size: 14px;
+    border-radius: 3px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(43, 123, 255);
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.ok-btn {
+    margin-left: 10px;
+    font-weight: 600;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 2px 2px 0px;
+    color: rgb(77, 144, 255);
+    background-color: rgb(247, 248, 250);
     height: 35px;
     width: 117px;
     font-size: 14px;

@@ -8,13 +8,17 @@ const modalContext = createContext();
 
 const Modal = ({ children, onModalClose }) => {
     useEffect(() => {
+        const bodyElement = document.getElementsByTagName('body')[0];
         function keyListener(e) {
             const listener = keyListenersMap.get(e.keyCode);
             return listener && listener(e);
         }
         document.addEventListener("keydown", keyListener);
-
-        return () => document.removeEventListener("keydown", keyListener);
+        bodyElement.style.overflow = 'hidden';
+        return () => {
+            document.removeEventListener("keydown", keyListener);
+            bodyElement.style.overflow = 'auto';
+        }
     });
 
     const onOverlayClick = () => {
@@ -89,6 +93,16 @@ Modal.Body = function ModalBody(props) {
 
 Modal.Footer = function ModalFooter(props) {
     return <div className="modal-footer">{props.children}</div>;
+};
+
+Modal.Footer.PositiveBtn = function PositiveBtn(props) {
+    return (
+        <button
+            {...props}
+            className="ok-btn"
+            onClick={props.onPositiveClick}
+        />
+    );
 };
 
 Modal.Footer.CloseBtn = function CloseBtn(props) {
