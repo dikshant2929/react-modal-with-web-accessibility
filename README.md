@@ -5,6 +5,8 @@ React Modal Library helps user with Web Accessibility
 
 In the project directory, you can run:
 
+![](using_tab_key.gif)
+
 ### `npm start`
 
 Runs the app in the development mode.<br />
